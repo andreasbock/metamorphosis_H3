@@ -1,0 +1,6 @@
+*.pvd
+*.png
+*.vtu
+*.pyc
+imgs/
+*.swp
