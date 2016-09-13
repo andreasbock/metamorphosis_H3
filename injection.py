@@ -95,7 +95,6 @@ def injection(res, V, W):
     L.setSizes((sp_dofs, V.dof_count))
     L.setType('aij')
     L.setUp()
-    Lnp = np.zeros((sp_dofs, V.dof_count))
 
     # loop over each dof to populate L
     for i in range(sp_dofs):
@@ -105,21 +104,7 @@ def injection(res, V, W):
                 print "j = " + str(j) +  " not in thing!"
                 exit()
             L.setValue(i, j, val)
-            Lnp[i, j] = val
     L.assemble()
-
-    test = 0
-    if test:
-        i = 4
-        js = adj_nodes(i, V).flatten()
-        print adj_nodes(i, V)
-        print Lnp[i,:]
-        z = zip(js, vals)
-        for i in z:
-            print i
-        plt.spy(Lnp)
-        plt.show()
-        p()
 
     return L
 
